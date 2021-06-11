@@ -1,0 +1,166 @@
+
+@import url("styles/vars/style.css");
+@import url("styles/normal.css");
+
+/* VARS */
+$black: #000000;
+$white: #ffffff;
+
+$body-color: $white;
+$h1-color: $black;
+$h2-color: $black;
+$default-text-color: $black;
+
+/* END VARS */
+
+/* MIXINS */
+@mixin base-flex($wrap, $horizontal, $vartical) 
+{ 
+    display: flex; 
+    flex-wrap: $wrap;
+    justify-content: $horizontal;
+    align-items: $vartical;
+}
+@mixin decoration-none{
+    list-style-type: none;
+}
+@mixin logo-style{
+    height: 40px;
+    width: 40px;
+    background: $black;
+    color: $white;
+    margin: 18px;
+    flex: unset;
+    @include base-flex(
+        wrap,
+        center,
+        center
+    )
+}
+@mixin li-menu(){
+    padding: 10px;
+    flex: unset;
+    color: $default-text-color;
+    @include decoration-none()
+}
+@mixin default-link(){
+    @include decoration-none();
+    color: $default-text-color;
+    text-decoration: none;
+}
+@mixin default-panel-item(){
+    width: 10px;
+    position: absolute;
+    left: -5px;
+    top: -10px;
+}
+@mixin default-btn {
+    padding: 10px 20px;
+    @include decoration-none();
+    color: $default-text-color;
+    text-decoration: none;
+    border: 1px solid;
+}
+
+/* END MIXINS */
+
+body{
+    background: $body-color;
+    color: $default-text-color;
+    .overlay{
+        display: none;
+        &.active{
+            display: block;
+        }
+        .modal{
+            form{
+                .modal__login{
+
+                }
+                .modal__password{
+
+                }
+            }
+        }
+    }
+    .header-top{
+        hr{
+           width: 100%;
+        }
+        .logo-container{
+            flex: unset;
+            .logo-container__logo-item{
+                @include logo-style()
+            }
+        }
+        nav{
+            ul{
+                li{
+                    @include li-menu();
+                    a{
+                        @include default-link()
+                    }
+                }
+                @include base-flex(
+                    wrap,
+                    center,
+                    center
+                );  
+                justify-content: left;
+            }
+        }
+        .header-top__control-panel{
+            max-width: 15%;
+            *{
+                text-align: center;
+            }
+            a{
+                @include default-link()
+            }
+            @include base-flex(
+                    wrap,
+                    center,
+                    center
+            );
+            .control-panel__enter{
+                position: relative;
+                a::before{
+                    content: url(img/male-user.svg);
+                    @include default-panel-item();
+                }
+            }
+            .control-panel__basket{
+                position: relative;
+                a{
+                    &::before{
+                        content: url(img/basket.svg);
+                        @include default-panel-item();
+                    }
+                }
+            }
+        }
+        *{
+            flex: auto;
+        }
+        @include base-flex(
+            wrap,
+            center,
+            center
+        );
+        .main-info{
+            width: 100%;
+            text-align: center;
+            a{
+                @include default-btn();
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+

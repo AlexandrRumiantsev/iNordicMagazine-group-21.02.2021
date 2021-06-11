@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css"> 
+    <title>Document</title>
+</head>
+<body>
+    <div class='wrapper'>
+        <header class='header-top'>
+            <div class='header-top__logo-container logo-container'>
+                <div class="logo-container__logo-item">
+                    SH
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li>
+                        <a href='#'>
+                            Женщинам
+                        </a>
+                    </li>
+                    <li>
+                        <a href='#'>
+                            Мужчинам
+                        </a>     
+                    </li>
+                    <li>
+                        <a href='#'>
+                        Детям  
+                        </a>
+                    </li>
+                    <li>
+                        <a href='#'>
+                            Новинки 
+                        </a>
+                    </li>
+                    <li>
+                        <a href='#'>
+                        О нас  
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class='header-top__control-panel control-panel'>
+                <div class='control-panel__enter'>
+                    <a href="#">Войти</a>
+                </div>
+                <div class='control-panel__basket'>
+                    <a href="#">Корзина</a>
+                </div>
+            </div>
+            <hr>
+            <div class='header-top__main-info main-info'>
+                <h1>НОВЫЕ ПОСТУПЛЕНИЯ ВЕСНЫ</h1>
+                <h2>Мы подготовили для ВАС новинки сезона</h2>
+                <a href='#'>Посмотреть новинки</a>
+            </div>
+        </header>
+        <main class='main-index'>
+            <div class='main-index__goods goods'>
+               <div class='goods__item'> </div> 
+               <div class='goods__item'> </div> 
+               <div class='goods__item'> </div> 
+               <div class='goods__item'> </div> 
+               <div class='goods__item'> </div> 
+               <div class='goods__item'> </div>
+               <div class='goods__item'> </div> 
+               <div class='goods__item'> </div> 
+               <div class='goods__item'> </div>
+               <div class='goods__item'> </div>
+            </div>
+            <div class='main-index__form form'>
+                <h2>БУДЬ ВСЕГДА В КУРСЕ ВЫГОДНЫХ ПРЕДЛОЖЕНИЙ</h2>
+                <h3>Подписывайся и следи за выгодными предложениями</h3>
+                <input type='text' name='offer' placeholder="e-mail">
+                <input type="submit" value="ЗАПИСАТЬСЯ">
+                <div class='form__errors'></div>
+            </div>
+        </main>
+        <footer></footer>
+    </div>
+    <div class='overlay'>
+        <form id='login'>
+            <div onClick='switchForm()'>Закрыть</div>
+            <div class='overlay__modal modal'>
+                <input class='modal__login' name='LOGIN'/>
+                <input class='modal__password' name='PASSWORD'/>
+                <input type="submit" value='Войти'/>
+            </div>
+        </form>
+    </div>
+    <script src='script.js'></script>
+</body>
+</html>
