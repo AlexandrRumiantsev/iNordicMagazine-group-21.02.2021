@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url("styles/vars/style.css");
 @import url("styles/normal.css");
 /* VARS */
@@ -9,12 +10,114 @@ body {
   color: #000000;
 }
 
-body .overlay {
+body .header-top .control-panel a {
   display: none;
 }
 
-body .overlay.active {
+body .header-top .control-panel a.active {
   display: block;
+}
+
+body .overlay {
+  display: none;
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.7);
+  top: 0;
+  left: 0;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body .overlay.active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+body .overlay form {
+  width: 50%;
+  min-height: 400px;
+  background: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: relative;
+}
+
+body .overlay form .overlay__close {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+body .overlay form .overlay__close::after {
+  content: '×';
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 30px;
+  width: 30px;
+  border-radius: 30px;
+  background: red;
+  color: white;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 10px;
+}
+
+body .overlay form .overlay__login {
+  width: 100%;
+  margin: 10px;
+  height: 35px;
+  width: 100%;
+  border-radius: 3px;
+}
+
+body .overlay form .overlay__password {
+  width: 100%;
+  margin: 10px;
+  height: 35px;
+  width: 100%;
+  border-radius: 3px;
+}
+
+body .overlay form input[type="submit"] {
+  position: absolute;
+  bottom: 30px;
+  left: 45%;
+  border: 1px solid #dbd7d7;
+  background: none;
+  font-size: 20px;
+  color: #cfcccc;
+  padding: 8px;
+  pointer-events: none;
+}
+
+body .overlay form input[type="submit"].active {
+  cursor: pointer;
+  pointer-events: auto;
+  color: #000;
+  border: 1px solid #000;
+}
+
+body .overlay form .modal__error {
+  color: red;
 }
 
 body .header-top {

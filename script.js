@@ -1,5 +1,15 @@
 // List VARIBALS - CONST
-
+const GLOBAL_DATA = {
+    USER: {
+        LOGIN: '',
+        PASSWORD: '',
+    },
+    DATA: {
+        RU: {
+            USER_NOT_FOUND: "Пользователь не найден в системе"
+        }
+    }
+}
 // List FUNCTIONS
 /**
  * Закрытие формы
@@ -31,14 +41,62 @@ const API = {
 			function(response){
 				let userInfo = JSON.parse(response);
                 //Остановились на 28 Занятии 
-                alert('WELCOME' + userInfo[0].LOGIN);
+                if(userInfo.length == 0){
+                    //Уведомление что данного польщователя нет в системе
+                    displayError(GLOBAL_DATA.DATA.RU.USER_NOT_FOUND);
+                }else{
+                    loginUser(userInfo[0]);
+                    GLOBAL_DATA['USER'] = userInfo[0]
+                    //alert('WELCOME' + userInfo[0].LOGIN)
+                }
 			}
 		)
 
 	}
 }
 
+const userSession = { 
+    enter: (data) => {
+        sessionStorage.setItem('user', JSON.stringify(data));
+    },
+    remove: () => {
+        sessionStorage.removeItem('user');
+    }
+}
 
+const switchUserLogin = (login) => {
+    document.querySelector('.control-panel__enter a').classList.toggle('active');
+    if(GLOBAL_DATA['USER']['LOGIN'] == '')
+        document.querySelector('.control-panel__enter .enter__login').innerText = '';
+    else document.querySelector('.control-panel__enter .enter__login').innerText = `${login} (Выйти)`;
+}
+
+
+const loginUser = (data) => {
+    //Записываем данные в сессию
+    userSession.enter(data);
+    // После записи пользователя в сессею
+    // 1) Убираем форму авторизации
+    switchForm();
+    // 2) Вместо кнопки войти, выводим логин пользователя
+    switchUserLogin(data.LOGIN);
+}
+
+const displayError= (mess) => {
+    /*
+        1) Получить элемнт в который записываем уведомление
+        2) Записать уведомление в элемент
+    */ 
+   document.getElementsByClassName('modal__error')[0].innerText = mess;
+
+}
+
+const validForm = () => {
+    console.log('VALID')
+    if(GLOBAL_DATA['USER']['LOGIN'] != '' && GLOBAL_DATA['USER']['PASSWORD'] != '')
+        document.querySelector('#login input[type="submit"]').classList.add('active')
+    else document.querySelector('#login input[type="submit"]').classList.remove('active')
+}
 
 // List Process 
 document.addEventListener("DOMContentLoaded", function(){
@@ -67,4 +125,29 @@ document.addEventListener("DOMContentLoaded", function(){
 
     })
 
+    /**
+     * Обработчик события ввода текста в элементы формы
+     */
+        const formInputs =  document.forms.login.querySelectorAll("#login input:not(input[type='submit'])"); 
+        Object.keys(formInputs).forEach(element => {
+            console.log(formInputs[element]);
+            formInputs[element].oninput  = (event) => {
+                GLOBAL_DATA['USER'][event.target.name] = event.target.value;
+                validForm();
+            }
+        })
+        
+    document.querySelector('.control-panel__enter .enter__login').addEventListener('click', event => {
+        userSession.remove();
+        GLOBAL_DATA['USER']['LOGIN'] = '';
+        GLOBAL_DATA['USER']['PASSWORD'] = '';
+        switchUserLogin()
+
+    })
+
+     /* document.forms.login.querySelectorAll("#login input[type='text']").addEventListener('oninput', event => {
+        console.log('oninput', event);
+     })*/
+
 });
+

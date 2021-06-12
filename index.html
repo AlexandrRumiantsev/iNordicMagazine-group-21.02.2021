@@ -45,11 +45,12 @@
                 </ul>
             </nav>
             <div class='header-top__control-panel control-panel'>
-                <div class='control-panel__enter'>
-                    <a href="#">Войти</a>
+                <div class='control-panel__enter enter'>
+                    <a href="#" class="active">Войти</a>
+                    <span class="enter__login"></span>
                 </div>
                 <div class='control-panel__basket'>
-                    <a href="#">Корзина</a>
+                    <a href="#" class="active">Корзина</a>
                 </div>
             </div>
             <hr>
@@ -84,11 +85,12 @@
     </div>
     <div class='overlay'>
         <form id='login'>
-            <div onClick='switchForm()'>Закрыть</div>
+            <div class='overlay__close' onClick='switchForm()'></div>
             <div class='overlay__modal modal'>
-                <input class='modal__login' name='LOGIN'/>
-                <input class='modal__password' name='PASSWORD'/>
+                <input placeholder='Логин' type='text' max='30' class='overlay__login' name='LOGIN'/>
+                <input placeholder='Пароль' type='password' max='30' class='overlay__password' name='PASSWORD'/>
                 <input type="submit" value='Войти'/>
+                <div class='modal__error'></div>
             </div>
         </form>
     </div>
