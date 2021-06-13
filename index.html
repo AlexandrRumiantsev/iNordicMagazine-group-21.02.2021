@@ -9,57 +9,7 @@
 </head>
 <body>
     <div class='wrapper'>
-        <header class='header-top'>
-            <div class='header-top__logo-container logo-container'>
-                <div class="logo-container__logo-item">
-                    SH
-                </div>
-            </div>
-            <nav>
-                <ul>
-                    <li>
-                        <a href='#'>
-                            Женщинам
-                        </a>
-                    </li>
-                    <li>
-                        <a href='#'>
-                            Мужчинам
-                        </a>     
-                    </li>
-                    <li>
-                        <a href='#'>
-                        Детям  
-                        </a>
-                    </li>
-                    <li>
-                        <a href='#'>
-                            Новинки 
-                        </a>
-                    </li>
-                    <li>
-                        <a href='#'>
-                        О нас  
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-            <div class='header-top__control-panel control-panel'>
-                <div class='control-panel__enter enter'>
-                    <a href="#" class="active">Войти</a>
-                    <span class="enter__login"></span>
-                </div>
-                <div class='control-panel__basket'>
-                    <a href="#" class="active">Корзина</a>
-                </div>
-            </div>
-            <hr>
-            <div class='header-top__main-info main-info'>
-                <h1>НОВЫЕ ПОСТУПЛЕНИЯ ВЕСНЫ</h1>
-                <h2>Мы подготовили для ВАС новинки сезона</h2>
-                <a href='#'>Посмотреть новинки</a>
-            </div>
-        </header>
+        <script src="header.js"></script>
         <main class='main-index'>
             <div class='main-index__goods goods'>
                <div class='goods__item'> </div> 
@@ -83,17 +33,7 @@
         </main>
         <footer></footer>
     </div>
-    <div class='overlay'>
-        <form id='login'>
-            <div class='overlay__close' onClick='switchForm()'></div>
-            <div class='overlay__modal modal'>
-                <input placeholder='Логин' type='text' max='30' class='overlay__login' name='LOGIN'/>
-                <input placeholder='Пароль' type='password' max='30' class='overlay__password' name='PASSWORD'/>
-                <input type="submit" value='Войти'/>
-                <div class='modal__error'></div>
-            </div>
-        </form>
-    </div>
+    <script src="footer.js"></script>
     <script src='script.js'></script>
 </body>
 </html>
