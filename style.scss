@@ -219,12 +219,12 @@ body{
             center,
             center
         );
-        .main-info{
-            width: 100%;
-            text-align: center;
-            a{
-                @include default-btn();
-            }
+    }
+    .main-info{
+        width: 100%;
+        text-align: center;
+        a{
+            @include default-btn();
         }
     }
 }

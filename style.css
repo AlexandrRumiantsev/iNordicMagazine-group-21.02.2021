@@ -258,12 +258,12 @@ body .header-top * {
           flex: auto;
 }
 
-body .header-top .main-info {
+body .main-info {
   width: 100%;
   text-align: center;
 }
 
-body .header-top .main-info a {
+body .main-info a {
   padding: 10px 20px;
   list-style-type: none;
   color: #000000;

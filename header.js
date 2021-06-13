@@ -43,13 +43,8 @@ document.write(`
         <a href="#" class="active">Корзина</a>
     </div>
 </div>
-<hr>
-<div class='header-top__main-info main-info'>
-    <h1>НОВЫЕ ПОСТУПЛЕНИЯ ВЕСНЫ</h1>
-    <h2>Мы подготовили для ВАС новинки сезона</h2>
-    <a href='#'>Посмотреть новинки</a>
-</div>
 </header>
+<hr>
 <div class='overlay'>
         <form id='login'>
             <div class='overlay__close' onClick='switchForm()'></div>
