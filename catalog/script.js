@@ -2,12 +2,23 @@ GLOBAL_DATA.countPage = 1;
 GLOBAL_DATA.nowPage = 1;
 GLOBAL_DATA.sortArray = [];
 //METHODS
+/**
+ * Шаблон карточки товара на странице каталога
+ * @example
+ * templateGood(data);
+ * @param data - Информация о товаре
+ * @returns {Number} Returns шаблон карточки товара в виде строки
+ */
 const templateGood = function(data){
-    return `<div class='main-index__good'>
-                <img src='../img/goods/${data.IMG}.jpeg'/>
-                <h2>${data.TITLE}</h2>
-                <div>${data.DISCR}</div>
-            </div>`
+    return `
+            <a href="../good/index.html?id=${data.ID}">
+                <div class='main-index__good'>
+                    <img src='../img/goods/${data.IMG}.jpeg'/>
+                    <h2>${data.TITLE}</h2>
+                    <div>${data.DISCR}</div>
+                </div>
+            </a>
+        `
 }
 
 const changePagination = (numb) => { 
