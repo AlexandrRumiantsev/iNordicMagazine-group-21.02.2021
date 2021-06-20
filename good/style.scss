@@ -1,0 +1,54 @@
+.good-index{
+    .item{
+        .item__container-img{
+            max-width: 40%;
+            margin: auto;
+            img{
+                width: 100%;
+            }
+        }
+        .item__container-info{
+            text-align: center;
+            h1{
+
+            }
+            h2{
+
+            }
+            .item__count-choise{
+                margin: 10px;
+                display: flex;
+                justify-content: center;
+                span{
+                    margin: 3px;
+                    width: 30px;
+                    height: 30px;
+                    background: black;
+                    color: white;
+                    border-radius: 3px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+            }
+            .sizes-block{
+                display: flex;
+                justify-content: center;
+                .sizes-block__item{
+                    width: 30px;
+                    height: 30px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    border: 1px solid black;
+                    margin: 3px;
+                    cursor: pointer;
+                    &.active{
+                        border: 1px solid red;
+                    }
+                }
+            }
+        }
+       
+    }
+}

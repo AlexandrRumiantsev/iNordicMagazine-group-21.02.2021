@@ -1,1 +1,31 @@
-/* No CSS *//*# sourceMappingURL=style.css.map */
+.basket-index .element {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-bottom: 1px solid #f2f2f2;
+  margin: 20px;
+}
+
+.basket-index .element h2 {
+  width: 300px;
+}
+
+.basket-index .element .element__container-img img {
+  max-width: 150px;
+}
+
+.basket-index .element .element__price {
+  text-align: center;
+  width: 300px;
+}
+
+.basket-index .element .element__count {
+  text-align: center;
+  width: 300px;
+}
+/*# sourceMappingURL=style.css.map */

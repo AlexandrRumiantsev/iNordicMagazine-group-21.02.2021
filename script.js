@@ -1,5 +1,5 @@
 // List VARIBALS - CONST
-const GLOBAL_DATA = {}
+GLOBAL_DATA;
 // List FUNCTIONS
 
 

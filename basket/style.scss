@@ -1,0 +1,25 @@
+.basket-index{
+    .element{
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        border-bottom: 1px solid #f2f2f2;
+        margin: 20px;
+        h2{
+            width: 300px;
+        }
+        .element__container-img{
+            img{
+                max-width: 150px;
+            }
+        }
+        .element__price{
+            text-align: center;
+            width: 300px;
+        }
+        .element__count{
+            text-align: center;
+            width: 300px;
+        }
+    }
+}

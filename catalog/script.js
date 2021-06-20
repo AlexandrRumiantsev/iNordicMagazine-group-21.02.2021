@@ -21,6 +21,13 @@ const templateGood = function(data){
         `
 }
 
+/**
+ * 
+ * @example
+ * changePagination(numb);
+ * @param data - Информация о товаре
+ * @returns {Number} Returns шаблон карточки товара в виде строки
+ */
 const changePagination = (numb) => { 
 
     //4 ШАГ - Обрабатываем событие по изменение страницы элементов в соответствии с навигационный индексом

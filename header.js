@@ -1,3 +1,6 @@
+/**
+ * Общая шапка сайта, которая используется на всех других страницах
+ */
 document.write(`
 <header class='header-top'>
 <div class='header-top__logo-container logo-container'>
@@ -40,7 +43,10 @@ document.write(`
         <span class="enter__login"></span>
     </div>
     <div class='control-panel__basket'>
-        <a href="#" class="active">Корзина</a>
+        <a href="../basket/index.html" class="active">
+            Корзина
+            <span id='count'>0</span>
+        </a>
     </div>
 </div>
 </header>
@@ -58,6 +64,9 @@ document.write(`
 </div>
 `); 
 
+/**
+ * Глобальные данные, которые содержат информацию о пользователе и системные сообщения
+ */
 const GLOBAL_DATA = {
     USER: {
         LOGIN: '',
@@ -71,7 +80,7 @@ const GLOBAL_DATA = {
 }
 
  /**
- * Закрытие формы
+ * Закрытие и открытие формы для авторизации и регистрации пользователя в системе
  * 1) Получить элемент формы из DOM дерева
  * 2) Удалить из дом дерева
  */
@@ -79,11 +88,20 @@ const switchForm = function(){
     document.querySelector('.overlay').classList.toggle('active');
 }
 
+/**
+ * Обработчик нажатия на кнопку - Войти
+ */
 const handlerBtnEnter = function(){
     switchForm();
 }
 
+/**
+ * Объект для работы с внешним API сервисом
+ */
 const API = {
+    /**
+     * query -  Асинхронный запрос к серверу 
+     */
 	query: function(queryString, method, callback){
 		var xhr = new XMLHttpRequest();
 		xhr.open(method, queryString, true);
@@ -92,6 +110,12 @@ const API = {
 		};
 		xhr.send();
 	},
+    /**
+     * getUserItem - Делает запрос к получения ползователя из АПИ и
+     * если сервис возвращает нам данные о пользователе
+     * то отрабатывает функция для логирования пользователя, 
+     * в ином случае отрабывает displayError, которая выводит ошибку(пользователь не найден в системе)
+     */
 	getUserItem: function(login, password){
 
 		this.query(
@@ -114,6 +138,11 @@ const API = {
 	}
 }
 
+/**
+ * userSession - Работает с сиссиями д JS
+ * enter - Записывает сессию пользователя
+ * remove - Удаляет сессию пользователя
+ */
 const userSession = { 
     enter: (data) => {
         sessionStorage.setItem('user', JSON.stringify(data));
@@ -123,6 +152,11 @@ const userSession = {
     }
 }
 
+/**
+ * userSession - Работает с сиссиями д JS
+ * enter - Записывает сессию пользователя
+ * remove - Удаляет сессию пользователя
+ */
 const switchUserLogin = (login) => {
     document.querySelector('.control-panel__enter a').classList.toggle('active');
     if(GLOBAL_DATA['USER']['LOGIN'] == '')
@@ -130,7 +164,9 @@ const switchUserLogin = (login) => {
     else document.querySelector('.control-panel__enter .enter__login').innerText = `${login} (Выйти)`;
 }
 
-
+/**
+ * Основная функция логирования пользователя в системе
+ */
 const loginUser = (data) => {
     //Записываем данные в сессию
     userSession.enter(data);
@@ -150,6 +186,9 @@ const displayError= (mess) => {
 
 }
 
+/**
+ * Проверяем(валидируем) форму на пусстые значения
+ */
 const validForm = () => {
     console.log('VALID')
     if(GLOBAL_DATA['USER']['LOGIN'] != '' && GLOBAL_DATA['USER']['PASSWORD'] != '')
@@ -159,6 +198,9 @@ const validForm = () => {
 
 // List Process 
 document.addEventListener("DOMContentLoaded", function(){
+    if(sessionStorage.getItem('basket'))
+        document.getElementById('count').innerText = Object.keys(JSON.parse(sessionStorage.getItem('basket'))).length;
+    else document.getElementById('count').innerText = 0;
     /**
      * Обработчик Нажатия на кнопку - Войти
      */
@@ -171,6 +213,7 @@ document.addEventListener("DOMContentLoaded", function(){
      * Обработчик Отправки формы на сервер - Кнопка Войти на форме 
      */
     document.forms.login.addEventListener('submit', event => {
+        // preventDefault - Останавливает стандартное событие кнопки (отправку формы)
         event.preventDefault();
 
         /**
@@ -194,7 +237,10 @@ document.addEventListener("DOMContentLoaded", function(){
                 validForm();
             }
         })
-        
+    
+    /**
+     * Сброс авторизации(разлогин) пользователя в системе
+     */
     document.querySelector('.control-panel__enter .enter__login').addEventListener('click', event => {
         userSession.remove();
         GLOBAL_DATA['USER']['LOGIN'] = '';
@@ -202,9 +248,5 @@ document.addEventListener("DOMContentLoaded", function(){
         switchUserLogin()
 
     })
-
-     /* document.forms.login.querySelectorAll("#login input[type='text']").addEventListener('oninput', event => {
-        console.log('oninput', event);
-     })*/
 
 });
