@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="../style.css">
     <link rel="stylesheet" type="text/css" href="style.css">
     <title>Корзина</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 </head>
 <body>
     <script src="../header.js"></script>
@@ -16,9 +17,9 @@
     <footer>
         <form id='order'>
         <h2>Форма для оформления заказа</h2>
-            <input type="text" placeholder="ФИО"/>
-            <input type="tel"  placeholder="+7 (987) 89-23-22"/>
-            <input type="email" placeholder="mail@mail.ru"/>
+            <input type="text" name='FIO' placeholder="ФИО"/>
+            <input type="tel"  name='TEL' placeholder="+7 (987) 89-23-22"/>
+            <input type="email" name='EMAIL' placeholder="mail@mail.ru"/>
             <input type="submit" value='Оформить заказ'/>
         </form>
     </footer>

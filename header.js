@@ -105,13 +105,16 @@ const API = {
     /**
      * query -  Асинхронный запрос к серверу 
      */
-	query: function(queryString, method, callback){
+	query: function(queryString, method, callback, params){
 		var xhr = new XMLHttpRequest();
 		xhr.open(method, queryString, true);
 		xhr.onload = function(){
 		    callback(xhr.responseText);
 		};
-		xhr.send();
+        debugger
+        if(params){
+            xhr.send(params);
+        }else xhr.send();
 	},
     /**
      * getUserItem - Делает запрос к получения ползователя из АПИ и
