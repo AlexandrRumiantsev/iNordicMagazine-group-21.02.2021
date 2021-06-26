@@ -270,4 +270,87 @@ body .main-info a {
   text-decoration: none;
   border: 1px solid;
 }
+
+html body .item1 {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 2;
+  -ms-grid-column: 1;
+  grid-area: item1;
+  background-color: red;
+}
+
+html body .item2 {
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+  grid-area: item2;
+}
+
+html body .item3 {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: item3;
+}
+
+html body .item4 {
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  grid-area: item4;
+  background-color: red;
+}
+
+html body .item5 {
+  -ms-grid-row: 3;
+  -ms-grid-column: 2;
+  grid-area: item5;
+}
+
+html body .item6 {
+  -ms-grid-row: 1;
+  -ms-grid-column: 3;
+  grid-area: item6;
+  background-color: red;
+}
+
+html body .item7 {
+  -ms-grid-row: 2;
+  -ms-grid-column: 3;
+  grid-area: item7;
+}
+
+html body .item8 {
+  -ms-grid-row: 3;
+  -ms-grid-column: 3;
+  grid-area: item8;
+  background-color: red;
+}
+
+html body .item9 {
+  -ms-grid-row: 1;
+  -ms-grid-column: 4;
+  grid-area: item9;
+}
+
+html body .item10 {
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 2;
+  -ms-grid-column: 4;
+  grid-area: item10;
+  background-color: red;
+}
+
+.grid-container {
+  display: -ms-grid;
+  display: grid;
+      grid-template-areas: 'item1 item3 item6 item9' 'item1 item4 item7 item10' 'item2 item5 item8 item10';
+  grid-gap: 10px;
+  background-color: #2196F3;
+  padding: 10px;
+}
+
+.grid-container > div {
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  padding: 20px 0;
+  font-size: 30px;
+}
 /*# sourceMappingURL=style.css.map */

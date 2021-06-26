@@ -2,6 +2,24 @@ GLOBAL_DATA.countPage = 1;
 GLOBAL_DATA.nowPage = 1;
 GLOBAL_DATA.sortArray = [];
 //METHODS
+
+/**
+ * Получение гет параметров из адресной строки
+ */
+ var params = window
+ .location
+ .search
+ .replace('?','')
+ .split('&')
+ .reduce(
+     function(p,e){
+         var a = e.split('=');
+         p[ decodeURIComponent(a[0])] = decodeURIComponent(a[1]);
+         return p;
+     },
+     {}
+ );
+
 /**
  * Шаблон карточки товара на странице каталога
  * @example
@@ -95,24 +113,58 @@ const sortForPagination = (count, data) => {
     
 }
 
+const sortByCategory = (data, caterory) => {
+    // Инициализируем пустой массив лоя заполнениями товарами из нужной категории
+   const sortArr = [];
+   const category = caterory.toUpperCase();
+   /* Перебираем массив в цикле */
+   data.forEach( (element, index) => {
+        // Заполняем sortArr в соответствии с категорией из ГЕТ параметр
+        //console.log(element['CATEGORY']);
+        if(element['CATEGORY'] == category){
+            sortArr.push(element);
+        }
+   })
+   return sortArr;
+}
+
+const emptyRenderGoods = () => {
+    document.querySelector('.main-index').innerHTML = `<h1>В данной категории нет товаров</h1>`
+}
+
 const renderGoods = (data) => {
-    //3.1 ТК мы получаем JSON, нужно его распарсить
-    const goodList = JSON.parse(data);
+    /* 
+       3.0 Так как нужно выводить товары по категориям, обработаем массив в сама начале.
+       Получаем массив с товарами из нужной категории
+    */
+    const category = params['category'];
+    let goodList = null;
+    // 3.1 Если категория в параметре есть - мы сортируем основной массив, если нет - то остовляем начальные данные
+    if(params['category'])
+        goodList = sortByCategory(JSON.parse(data), category);
+    else goodList = JSON.parse(data);
+
     //3.2 Общее кол-во товаров
     const countGood = goodList.length;
-    //3.3 Получаем количество элементов пагинации, которые нам необходимо отрисовать
-    const countPagBlock = goodList.length / GLOBAL_DATA.countPage;
-    //3.4 Отрисовать элемент - Пагинация, передав в метод отрисовки кол-во элементов
-    createPagination(countPagBlock)
-    //3.5 Сортируем массив с товарами для дальнейшей отрисовки в соответствии со страницей
-    sortForPagination(countGood, goodList);
 
-    // 3.6 Перебераем отсоортированный массив и рендерим на форму
-    GLOBAL_DATA.sortArray[GLOBAL_DATA.nowPage - 1].forEach( (element, index) => {
+    if(countGood == 0){
+        emptyRenderGoods()
+    }else{
+        //3.3 Получаем количество элементов пагинации, которые нам необходимо отрисовать
+        const countPagBlock = goodList.length / GLOBAL_DATA.countPage;
+        //3.4 Отрисовать элемент - Пагинация, передав в метод отрисовки кол-во элементов
+        createPagination(countPagBlock)
+        //3.5 Сортируем массив с товарами для дальнейшей отрисовки в соответствии со страницей
+        sortForPagination(countGood, goodList);
 
-        document.querySelector('.main-index').innerHTML += templateGood(element);
+        // 3.6 Перебераем отсоортированный массив и рендерим на форму
+        GLOBAL_DATA.sortArray[GLOBAL_DATA.nowPage - 1].forEach( (element, index) => {
+
+            document.querySelector('.main-index').innerHTML += templateGood(element);
+        
+        });
+    }
     
-    });
 }
 
 API.getAllGoods = function(login, password){
@@ -135,6 +187,9 @@ document.addEventListener("DOMContentLoaded", function(){
     //Добавить а Объект API получение всех товаро и вывод(рендер) их на верстку
     //1 - ШАГ Получаем все товары
     API.getAllGoods();
+
+
+
 });
 
 

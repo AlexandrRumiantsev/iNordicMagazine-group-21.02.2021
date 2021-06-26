@@ -11,28 +11,31 @@ document.write(`
 <nav>
     <ul>
         <li>
-            <a href='#'>
+            <a href='catalog/index.html'>
+                Все товары
+            </a>
+            <a href='catalog/index.html?category=woman'>
                 Женщинам
             </a>
         </li>
         <li>
-            <a href='#'>
+            <a href='catalog/index.html?category=men'>
                 Мужчинам
             </a>     
         </li>
         <li>
-            <a href='#'>
+            <a href='catalog/index.html?category=children'>
             Детям  
             </a>
         </li>
         <li>
-            <a href='#'>
+            <a href='catalog/index.html?category=new'>
                 Новинки 
             </a>
         </li>
         <li>
-            <a href='#'>
-            О нас  
+            <a href='about/index.html'>
+                О нас  
             </a>
         </li>
     </ul>
