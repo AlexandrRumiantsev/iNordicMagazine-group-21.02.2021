@@ -1,6 +1,19 @@
 @charset "UTF-8";
 @import url("styles/vars/style.css");
 @import url("styles/normal.css");
+/*
+BASE STYLE
+*/
+a {
+  color: black;
+  list-style-type: none;
+  text-decoration: none;
+}
+
+a:hover {
+  color: red;
+}
+
 /* VARS */
 /* END VARS */
 /* MIXINS */
@@ -352,5 +365,65 @@ html body .item10 {
   text-align: center;
   padding: 20px 0;
   font-size: 30px;
+}
+
+/* FOOTER BLOCK */
+/*
+    Функция для отрисовки бордера у определенных номеров элементов блока
+*/
+footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  left: 0;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+footer .block {
+  width: 33%;
+  border-right: 1px solid gray;
+}
+
+footer .block .content {
+  width: 300px;
+  margin: auto;
+}
+
+footer .block .content .box-sohial {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+footer .block .content .box-sohial span {
+  width: 30px;
+  height: 30px;
+  font-size: 24px;
+  border: 2px solid;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background: black;
+  color: white;
+  border-radius: 25px;
+  margin: 3px;
+}
+
+footer .block .content .box-sohial span:hover {
+  cursor: pointer;
+  background: white;
+  color: black;
 }
 /*# sourceMappingURL=style.css.map */

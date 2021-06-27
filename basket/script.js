@@ -33,37 +33,14 @@ const renderItemBasket = (data) => {
 
 //Функция отправки данных на сервер (след. занятие) дополнить функцию
 API.sendMailBasket = function(data, formData){
-    // Получаем данные для сообщения
-    console.log(JSON.parse(data))
-    console.log(formData);
-    //Формируем сообщение
-    let message = `<div>`;
-    message += '<p>Ваш заказ:</p>';
-    Object.keys(JSON.parse(data)).forEach(function(index){
-        message += `<div>
-                ${JSON.parse(data)[index]['TITLE']}
-        </div>`;
-        message += `<div>
-                ${JSON.parse(data)[index]['DISCR']}
-        </div>`;
-    })
-    message += `</div>`;
-    //Отправляем данные для отправки письма на сервер
-    //debugger
-    /*this.query(
-        `http://inordic.alexweber.ru/api/index.php`,
-        'POST',
-        function(response){
-            
-             if(response)
-                alert('Подписка успешно оформлена!');
-             else alert('Ошибка на сервере!');
-        },
-        {messege: message, mail:formData['EMAIL'].value, action:'sendMail'}
-    )*/
+   
     $.ajax({
         url: "http://inordic.alexweber.ru/api/index.php",
-        data: { mail: formData['EMAIL'].value, message:message, action: 'sendMail' }
+        data: { 
+            mail: formData['EMAIL'].value, 
+            order: data, 
+            action: 'sendOrder' 
+        }
       }).done(function(response) {
         console.log(response);
       });

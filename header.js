@@ -1,6 +1,7 @@
 /**
  * Общая шапка сайта, которая используется на всех других страницах
  */
+const local = 'file:///Users/aleksandr/Desktop/iNordicShop/';
 document.write(`
 <header class='header-top'>
 <div class='header-top__logo-container logo-container'>
@@ -11,30 +12,30 @@ document.write(`
 <nav>
     <ul>
         <li>
-            <a href='catalog/index.html'>
+            <a href="${local}catalog/index.html">
                 Все товары
             </a>
-            <a href='catalog/index.html?category=woman'>
+            <a href='${local}catalog/index.html?category=woman'>
                 Женщинам
             </a>
         </li>
         <li>
-            <a href='catalog/index.html?category=men'>
+            <a href="${local}catalog/index.html?category=men">
                 Мужчинам
             </a>     
         </li>
         <li>
-            <a href='catalog/index.html?category=children'>
+            <a href="${local}catalog/index.html?category=children">
             Детям  
             </a>
         </li>
         <li>
-            <a href='catalog/index.html?category=new'>
+            <a href="${local}catalog/index.html?category=new">
                 Новинки 
             </a>
         </li>
         <li>
-            <a href='about/index.html'>
+            <a href="${local}about/index.html">
                 О нас  
             </a>
         </li>
@@ -46,7 +47,7 @@ document.write(`
         <span class="enter__login"></span>
     </div>
     <div class='control-panel__basket'>
-        <a href="../basket/index.html" class="active">
+        <a href="${local}basket/index.html" class="active">
             Корзина
             <span id='count'>0</span>
         </a>
